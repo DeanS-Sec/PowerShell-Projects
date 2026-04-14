@@ -162,13 +162,52 @@ Write-ReportLine ""
 Write-Host "=== Risk Summary ==="
 Write-ReportLine "=== Risk Summary ==="
 
-# Check for unexpected enabled user accounts
+# Get only processes that have a readable path
+$processesWithPath = Get-Process | Where-Object { $_.Path }
+
+# --------------------------------------------
+# Check for enabled non-primary user accounts
+# --------------------------------------------
 foreach ($user in $users) {
     if ($user.Enabled -eq $true -and $user.Name -ne $currentUser) {
         Write-Host "WARNING: Enabled non-primary account found:" $user.Name -ForegroundColor Red
-        Write-ReportLine ("WARNING: Enabled non-primary account: {0}" -f $user.Name)
+        Write-ReportLine ("WARNING: Enabled non-primary account found: {0}" -f $user.Name)
+    }
+}
+
+# --------------------------------------------
+# Check for unexpected administrator accounts
+# --------------------------------------------
+foreach ($admin in $admins) {
+    if ($admin.Name -notlike "*$currentUser*" -and $admin.Name -notlike "*Administrator*") {
+        Write-Host "WARNING: Unexpected admin account:" $admin.Name -ForegroundColor Red
+        Write-ReportLine ("WARNING: Unexpected admin account: {0}" -f $admin.Name)
+    }
+}
+
+# --------------------------------------------
+# Check for high-risk listening ports
+# --------------------------------------------
+$highRiskPorts = @(135, 139, 445)
+$uniquePorts = $ports | Select-Object -ExpandProperty LocalPort -Unique
+
+foreach ($port in $uniquePorts) {
+    if ($highRiskPorts -contains $port) {
+        Write-Host "WARNING: High-risk port open:" $port -ForegroundColor Yellow
+        Write-ReportLine ("WARNING: High-risk port open: {0}" -f $port)
+    }
+}
+
+# --------------------------------------------
+# Check for processes running from Temp folders
+# --------------------------------------------
+foreach ($process in $processesWithPath) {
+    if ($process.Path -like "*Temp*") {
+        Write-Host "WARNING: Process running from Temp folder:" $process.ProcessName -ForegroundColor Yellow
+        Write-ReportLine ("WARNING: Process running from Temp folder: {0} | Path: {1}" -f $process.ProcessName, $process.Path)
     }
 }
 
 Write-Host ""
+Write-ReportLine ""
 Write-ReportLine ""
