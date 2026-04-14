@@ -62,6 +62,12 @@ This script can be used for:
 - Integrate Windows Defender scan results
 - Convert checks into reusable functions/modules
 
+- Security Relevance
+This script can be used by SOC analysts or system administrators to:
+- Identify suspicious processes consuming high CPU
+- Detect abnormal system configurations
+- Gather forensic baseline data during incident response
+
 ---
 
 ## Author
