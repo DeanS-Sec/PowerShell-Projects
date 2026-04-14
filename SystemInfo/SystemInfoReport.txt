@@ -1,0 +1,37 @@
+
+
+=== System Information ===
+
+
+CsName      WindowsVersion WindowsBuildLabEx                       OsArchitecture
+------      -------------- -----------------                       --------------
+CS-DSCHAUER 2009           26100.1.amd64fre.ge_release.240331-1435 64-bit
+
+
+
+=== Network Information ===
+
+
+InterfaceAlias               IPAddress       AddressFamily
+--------------               ---------       -------------
+Ethernet 4                   10.27.67.15              IPv4
+Wi-Fi 3                      169.254.103.9            IPv4
+Bluetooth Network Connection 169.254.138.140          IPv4
+Wi-Fi 2                      169.254.53.95            IPv4
+Wi-Fi                        169.254.171.16           IPv4
+Loopback Pseudo-Interface 1  127.0.0.1                IPv4
+
+
+
+=== Top CPU-Intensive Processes ===
+
+
+ProcessName     CPU    Id
+-----------     ---    --
+explorer    5993.62 12856
+chrome      4334.56 24072
+chrome      1130.47 16576
+chrome      1004.39 13660
+Code         863.72 21356
+
+
