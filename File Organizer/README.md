@@ -59,6 +59,12 @@ This project helped develop:
 - Integrate with Windows startup or scheduled tasks
 - Expand into a full workspace automation tool
 
+- Security Relevance
+This script can be used by SOC analysts or system administrators to:
+- Identify suspicious processes consuming high CPU
+- Detect abnormal system configurations
+- Gather forensic baseline data during incident response
+
 ---
 
 ## Author
