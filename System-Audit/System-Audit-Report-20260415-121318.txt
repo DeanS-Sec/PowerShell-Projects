@@ -1,0 +1,409 @@
+=== System Audit Script ===
+
+=== Basic System Info ===
+Computer Name: CS-DSCHAUER
+Current User: deanschauer
+
+=== Operating System Info ===
+OS Name: Microsoft Windows 11 Enterprise
+Version: 10.0.26200
+Build Number: 26200
+
+=== Local Users ===
+User: DefaultAccount | Enabled: False
+User: HelpDesk-Admin | Enabled: True
+User: NoGuest | Enabled: False
+User: WDAGUtilityAccount | Enabled: False
+
+=== Local Administrators ===
+Admin Member: BOISESTATE\Domain Admins
+Admin Member: BOISESTATE\OITDesktopAdmin
+Admin Member: BOISESTATE\svc_lansweeper
+Admin Member: BOISESTATE\svc-varonis-script
+Admin Member: CS-DSCHAUER\HelpDesk-Admin
+
+=== Running Processes ===
+Process: AggregatorHost | Id: 9716
+Process: ai | Id: 25768
+Process: AppHelperCap | Id: 4212
+Process: ApplicationFrameHost | Id: 872
+Process: backgroundTaskHost | Id: 16644
+Process: Bitwarden | Id: 25244
+Process: Bitwarden | Id: 27912
+Process: Bitwarden | Id: 10080
+Process: Bitwarden | Id: 15848
+Process: BridgeCommunication | Id: 16872
+Process: BridgeCommunication | Id: 24556
+Process: BridgeCommunication | Id: 24524
+Process: BridgeCommunication | Id: 22676
+Process: BridgeCommunication | Id: 22056
+Process: BridgeCommunication | Id: 21852
+Process: BridgeCommunication | Id: 20692
+Process: BridgeCommunication | Id: 17012
+Process: BridgeCommunication | Id: 16456
+Process: BridgeCommunication | Id: 22052
+Process: BridgeCommunication | Id: 12828
+Process: BridgeCommunication | Id: 14384
+Process: BridgeCommunication | Id: 2792
+Process: BridgeCommunication | Id: 5692
+Process: BridgeCommunication | Id: 6240
+Process: BridgeCommunication | Id: 2184
+Process: BridgeCommunication | Id: 6892
+Process: BridgeCommunication | Id: 12672
+Process: BridgeCommunication | Id: 12756
+Process: CcmExec | Id: 17064
+Process: chrome | Id: 22348
+Process: chrome | Id: 21540
+Process: chrome | Id: 21624
+Process: chrome | Id: 21888
+Process: chrome | Id: 21896
+Process: chrome | Id: 22140
+Process: chrome | Id: 21532
+Process: chrome | Id: 23240
+Process: chrome | Id: 26544
+Process: chrome | Id: 24588
+Process: chrome | Id: 25760
+Process: chrome | Id: 26268
+Process: chrome | Id: 26764
+Process: chrome | Id: 30428
+Process: chrome | Id: 31260
+Process: chrome | Id: 33616
+Process: chrome | Id: 20864
+Process: chrome | Id: 23700
+Process: chrome | Id: 19996
+Process: chrome | Id: 15164
+Process: chrome | Id: 19336
+Process: chrome | Id: 1320
+Process: chrome | Id: 19672
+Process: chrome | Id: 6664
+Process: chrome | Id: 10072
+Process: chrome | Id: 10492
+Process: chrome | Id: 11328
+Process: chrome | Id: 12008
+Process: chrome | Id: 12368
+Process: chrome | Id: 4448
+Process: chrome | Id: 14772
+Process: chrome | Id: 15028
+Process: chrome | Id: 16520
+Process: chrome | Id: 16576
+Process: chrome | Id: 16580
+Process: chrome | Id: 18632
+Process: chrome | Id: 18908
+Process: chrome | Id: 13660
+Process: CmRcService | Id: 6880
+Process: Code | Id: 22572
+Process: Code | Id: 22504
+Process: Code | Id: 21356
+Process: Code | Id: 18468
+Process: Code | Id: 17124
+Process: Code | Id: 7712
+Process: Code | Id: 11624
+Process: Code | Id: 7008
+Process: Code | Id: 6652
+Process: Code | Id: 16284
+Process: conhost | Id: 23104
+Process: conhost | Id: 9236
+Process: conhost | Id: 22940
+Process: CptService | Id: 7316
+Process: CrossDeviceResume | Id: 13220
+Process: csrss | Id: 1300
+Process: csrss | Id: 1412
+Process: ctfmon | Id: 14120
+Process: DFServ | Id: 3228
+Process: DFServerService | Id: 6908
+Process: DiagsCap | Id: 4280
+Process: dllhost | Id: 21460
+Process: dllhost | Id: 24536
+Process: dllhost | Id: 26776
+Process: DtsApo4Service | Id: 6924
+Process: dwm | Id: 2480
+Process: ERCService | Id: 7108
+Process: explorer | Id: 12856
+Process: fontdrvhost | Id: 1804
+Process: fontdrvhost | Id: 1808
+Process: HotKeyServiceUWP | Id: 6492
+Process: HPAudioAnalytics | Id: 27728
+Process: HpSfuService64 | Id: 3992
+Process: hpsvcsscan | Id: 4260
+Process: Idle | Id: 0
+Process: IntelAudioService | Id: 6896
+Process: IntelDisplayUMService | Id: 6208
+Process: IntelGraphicsSoftware.Service | Id: 7996
+Process: ipf_helper | Id: 3640
+Process: ipf_uf | Id: 6940
+Process: ipfsvc | Id: 6948
+Process: LansweeperAgentService | Id: 6932
+Process: LanWlanWwanSwitchingServiceUWP | Id: 8408
+Process: LockApp | Id: 12508
+Process: LsaIso | Id: 1564
+Process: lsass | Id: 1572
+Process: M365Copilot | Id: 26224
+Process: Memory Compression | Id: 4288
+Process: Microsoft.Management.Services.IntuneWindowsAgent | Id: 26324
+Process: MidiSrv | Id: 24820
+Process: MpDefenderCoreService | Id: 29512
+Process: msedge | Id: 29856
+Process: msedge | Id: 27316
+Process: msedge | Id: 24464
+Process: msedge | Id: 29780
+Process: msedge | Id: 20904
+Process: msedge | Id: 2640
+Process: msedge | Id: 24428
+Process: msedgewebview2 | Id: 29260
+Process: msedgewebview2 | Id: 18924
+Process: msedgewebview2 | Id: 19208
+Process: msedgewebview2 | Id: 19652
+Process: msedgewebview2 | Id: 20668
+Process: msedgewebview2 | Id: 20764
+Process: msedgewebview2 | Id: 22044
+Process: msedgewebview2 | Id: 29524
+Process: msedgewebview2 | Id: 22472
+Process: msedgewebview2 | Id: 18656
+Process: msedgewebview2 | Id: 26424
+Process: msedgewebview2 | Id: 26512
+Process: msedgewebview2 | Id: 28828
+Process: msedgewebview2 | Id: 28988
+Process: msedgewebview2 | Id: 29256
+Process: msedgewebview2 | Id: 22812
+Process: msedgewebview2 | Id: 26308
+Process: msedgewebview2 | Id: 18280
+Process: msedgewebview2 | Id: 18164
+Process: msedgewebview2 | Id: 3868
+Process: msedgewebview2 | Id: 4872
+Process: msedgewebview2 | Id: 12068
+Process: msedgewebview2 | Id: 12100
+Process: msedgewebview2 | Id: 12260
+Process: msedgewebview2 | Id: 12972
+Process: msedgewebview2 | Id: 18204
+Process: msedgewebview2 | Id: 13680
+Process: msedgewebview2 | Id: 13616
+Process: msedgewebview2 | Id: 14492
+Process: msedgewebview2 | Id: 15900
+Process: msedgewebview2 | Id: 15948
+Process: msedgewebview2 | Id: 16100
+Process: msedgewebview2 | Id: 16312
+Process: msedgewebview2 | Id: 17616
+Process: msedgewebview2 | Id: 17656
+Process: msedgewebview2 | Id: 14352
+Process: MsMpEng | Id: 25260
+Process: MsSense | Id: 2984
+Process: NetworkCap | Id: 4244
+Process: NisSrv | Id: 27244
+Process: Notepad | Id: 368
+Process: OfficeClickToRun | Id: 7024
+Process: OffloadItemService | Id: 2680
+Process: PanGPA | Id: 14980
+Process: PanGPS | Id: 7044
+Process: policyHost | Id: 24360
+Process: PresentMonService | Id: 5748
+Process: pwsh | Id: 22972
+Process: pwsh | Id: 23208
+Process: Registry | Id: 256
+Process: RtkAudUService64 | Id: 2384
+Process: RtkAudUService64 | Id: 7100
+Process: RtkAudUService64 | Id: 10624
+Process: RuntimeBroker | Id: 13956
+Process: RuntimeBroker | Id: 12796
+Process: RuntimeBroker | Id: 12548
+Process: RuntimeBroker | Id: 10020
+Process: RuntimeBroker | Id: 5356
+Process: SCNotification | Id: 24200
+Process: SearchFilterHost | Id: 29888
+Process: SearchHost | Id: 12304
+Process: SearchIndexer | Id: 10384
+Process: SearchProtocolHost | Id: 29816
+Process: Secure System | Id: 212
+Process: SecurityHealthService | Id: 13684
+Process: SecurityHealthSystray | Id: 13840
+Process: SenseNdr | Id: 4916
+Process: SenseTVM | Id: 10256
+Process: services | Id: 1540
+Process: ShellExperienceHost | Id: 14872
+Process: ShellHost | Id: 12932
+Process: sihost | Id: 9008
+Process: smartscreen | Id: 31240
+Process: smss | Id: 864
+Process: SnippingTool | Id: 12268
+Process: spoolsv | Id: 6724
+Process: sra-con | Id: 21132
+Process: StartMenuExperienceHost | Id: 13556
+Process: svchost | Id: 7652
+Process: svchost | Id: 7740
+Process: svchost | Id: 7780
+Process: svchost | Id: 8616
+Process: svchost | Id: 10148
+Process: svchost | Id: 10124
+Process: svchost | Id: 7132
+Process: svchost | Id: 10184
+Process: svchost | Id: 9848
+Process: svchost | Id: 7120
+Process: svchost | Id: 6964
+Process: svchost | Id: 6968
+Process: svchost | Id: 10192
+Process: svchost | Id: 6916
+Process: svchost | Id: 6732
+Process: svchost | Id: 6644
+Process: svchost | Id: 6616
+Process: svchost | Id: 6576
+Process: svchost | Id: 6404
+Process: svchost | Id: 6288
+Process: svchost | Id: 6984
+Process: svchost | Id: 11292
+Process: svchost | Id: 20652
+Process: svchost | Id: 11544
+Process: svchost | Id: 31928
+Process: svchost | Id: 26344
+Process: svchost | Id: 24504
+Process: svchost | Id: 23352
+Process: svchost | Id: 5820
+Process: svchost | Id: 19372
+Process: svchost | Id: 17300
+Process: svchost | Id: 17236
+Process: svchost | Id: 15120
+Process: svchost | Id: 14984
+Process: svchost | Id: 14932
+Process: svchost | Id: 14744
+Process: svchost | Id: 14388
+Process: svchost | Id: 14356
+Process: svchost | Id: 14196
+Process: svchost | Id: 14176
+Process: svchost | Id: 13936
+Process: svchost | Id: 13456
+Process: svchost | Id: 11988
+Process: svchost | Id: 11880
+Process: svchost | Id: 11840
+Process: svchost | Id: 11396
+Process: svchost | Id: 5572
+Process: svchost | Id: 5320
+Process: svchost | Id: 1992
+Process: svchost | Id: 2780
+Process: svchost | Id: 2668
+Process: svchost | Id: 2620
+Process: svchost | Id: 2580
+Process: svchost | Id: 2568
+Process: svchost | Id: 2552
+Process: svchost | Id: 2508
+Process: svchost | Id: 2372
+Process: svchost | Id: 2364
+Process: svchost | Id: 2788
+Process: svchost | Id: 2268
+Process: svchost | Id: 2140
+Process: svchost | Id: 2052
+Process: svchost | Id: 5376
+Process: svchost | Id: 1948
+Process: svchost | Id: 1752
+Process: svchost | Id: 1724
+Process: svchost | Id: 1588
+Process: svchost | Id: 1584
+Process: svchost | Id: 1312
+Process: svchost | Id: 2260
+Process: svchost | Id: 2900
+Process: svchost | Id: 2060
+Process: svchost | Id: 3132
+Process: svchost | Id: 5208
+Process: svchost | Id: 4864
+Process: svchost | Id: 4716
+Process: svchost | Id: 4708
+Process: svchost | Id: 4652
+Process: svchost | Id: 4608
+Process: svchost | Id: 4556
+Process: svchost | Id: 4224
+Process: svchost | Id: 2960
+Process: svchost | Id: 4204
+Process: svchost | Id: 4076
+Process: svchost | Id: 3916
+Process: svchost | Id: 3856
+Process: svchost | Id: 3832
+Process: svchost | Id: 3828
+Process: svchost | Id: 3752
+Process: svchost | Id: 3676
+Process: svchost | Id: 3644
+Process: svchost | Id: 3540
+Process: svchost | Id: 3468
+Process: svchost | Id: 3208
+Process: svchost | Id: 4008
+Process: SysInfoCap | Id: 4236
+Process: System | Id: 4
+Process: SystemSettings | Id: 7416
+Process: TabTip | Id: 10724
+Process: taskhostw | Id: 1172
+Process: taskhostw | Id: 7892
+Process: TbtP2pShortcutService | Id: 6952
+Process: TextInputHost | Id: 17808
+Process: TouchpointAnalyticsClientService | Id: 4252
+Process: unsecapp | Id: 5680
+Process: Widgets | Id: 14036
+Process: WidgetService | Id: 14752
+Process: wininit | Id: 1404
+Process: winlogon | Id: 1472
+Process: WINWORD | Id: 13088
+Process: WINWORD | Id: 19760
+Process: wlanext | Id: 8444
+Process: WmiPrvSE | Id: 4688
+Process: WmiPrvSE | Id: 5972
+Process: WmiPrvSE | Id: 16812
+Process: WmiPrvSE | Id: 17128
+Process: WmiPrvSE | Id: 17228
+Process: WmiPrvSE | Id: 22424
+Process: WmiPrvSE | Id: 29728
+Process: WMIRegistrationService | Id: 4620
+Process: WUDFCompanionHost | Id: 2532
+Process: WUDFCompanionHost | Id: 6360
+Process: WUDFCompanionHost | Id: 6380
+Process: WUDFHost | Id: 5464
+Process: WUDFHost | Id: 5220
+Process: WUDFHost | Id: 6316
+Process: WUDFHost | Id: 1912
+Process: WUDFHost | Id: 1740
+Process: WUDFHost | Id: 4976
+Process: XboxPcAppFT | Id: 26800
+
+=== Listening Ports ===
+Local Address: 0.0.0.0 | Port: 135
+Local Address: :: | Port: 135
+Local Address: :: | Port: 445
+Local Address: 0.0.0.0 | Port: 2701
+Local Address: :: | Port: 2701
+Local Address: :: | Port: 3389
+Local Address: 0.0.0.0 | Port: 3389
+Local Address: 127.0.0.1 | Port: 4767
+Local Address: 0.0.0.0 | Port: 5040
+Local Address: :: | Port: 5985
+Local Address: :: | Port: 7680
+Local Address: 0.0.0.0 | Port: 7725
+Local Address: :: | Port: 47001
+Local Address: :: | Port: 49664
+Local Address: 0.0.0.0 | Port: 49664
+Local Address: :: | Port: 49665
+Local Address: 0.0.0.0 | Port: 49665
+Local Address: 0.0.0.0 | Port: 49666
+Local Address: :: | Port: 49666
+Local Address: :: | Port: 49667
+Local Address: 0.0.0.0 | Port: 49667
+Local Address: :: | Port: 49668
+Local Address: 0.0.0.0 | Port: 49668
+Local Address: 0.0.0.0 | Port: 49669
+Local Address: :: | Port: 49669
+Local Address: 0.0.0.0 | Port: 49670
+Local Address: :: | Port: 49670
+Local Address: :: | Port: 49696
+Local Address: 0.0.0.0 | Port: 49696
+Local Address: 127.0.0.1 | Port: 58428
+Local Address: 127.0.0.1 | Port: 58827
+
+=== Risk Summary ===
+WARNING: Enabled non-primary account found: HelpDesk-Admin
+WARNING: Unexpected admin account: BOISESTATE\Domain Admins
+WARNING: Unexpected admin account: BOISESTATE\OITDesktopAdmin
+WARNING: Unexpected admin account: BOISESTATE\svc_lansweeper
+WARNING: Unexpected admin account: BOISESTATE\svc-varonis-script
+WARNING: Unexpected admin account: CS-DSCHAUER\HelpDesk-Admin
+=== Port Risk Summary ===
+WARNING: Risky port open: 135 (RPC) - Common lateral movement vector
+WARNING: Risky port open: 445 (SMB) - Common file sharing protocol with known vulnerabilities
+WARNING: Risky port open: 3389 (RDP) - Remote desktop protocol with potential for abuse
+WARNING: Risky port open: 5985 (WinRM HTTP) - Windows Remote Management over HTTP
+Risky ports monitored: 7
+Risky ports found: 4
+
+
