@@ -1,0 +1,21 @@
+# Generated endpoint-audit output. Keeping this scoped to Logs allows future
+# redacted JSON examples or configuration files to be committed deliberately.
+Logs/
+**/Logs/
+*.log
+
+# PowerShell test and analysis artifacts
+TestResults/
+*.clixml
+
+# Editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Temporary and backup files
+*.tmp
+*.bak
+*~
