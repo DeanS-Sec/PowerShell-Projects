@@ -2,7 +2,7 @@ PowerShell Endpoint Audit Learning Project
 
 This repository is a long-term PowerShell learning project centered on a Windows endpoint-audit script. The project began as a way to apply concepts from *Learn PowerShell in a Month of Lunches* and is being developed gradually so that every function, object, pipeline, and error-handling decision is understood before the next capability is added.
 
-The current milestone is `CurrentAudit.ps1` version **1.0.1**.
+The current milestone is `Invoke-EndpointAudit.ps1` version **1.0.1**.
 
 ## Project goals
 
