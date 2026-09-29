@@ -1,4 +1,4 @@
-PowerShell Endpoint Audit Learning Project
+# PowerShell Security Toolkit
 
 This repository is a long-term PowerShell learning project centered on a Windows endpoint-audit script. The project began as a way to apply concepts from *Learn PowerShell in a Month of Lunches* and is being developed gradually so that every function, object, pipeline, and error-handling decision is understood before the next capability is added.
 
@@ -57,16 +57,16 @@ The script is designed to continue when an individual collector fails. Failures 
 
 ## Usage
 
-From PowerShell, change to the `Scripts` directory and run:
+From PowerShell, change to the `Scripts\EndpointAudit` directory and run:
 
 ```powershell
-.\CurrentAudit.ps1
+.\Invoke-EndpointAudit.ps1
 ```
 
 Specify a different output directory or event-log lookback period when needed:
 
 ```powershell
-.\CurrentAudit.ps1 `
+.\Invoke-EndpointAudit.ps1 `
     -OutputPath 'C:\AuditLogs' `
     -LookbackHours 48
 ```
@@ -74,7 +74,7 @@ Specify a different output directory or event-log lookback period when needed:
 View the script's comment-based help:
 
 ```powershell
-Get-Help .\CurrentAudit.ps1 -Full
+Get-Help .\Invoke-EndpointAudit.ps1 -Full
 ```
 
 ## Output
@@ -82,7 +82,7 @@ Get-Help .\CurrentAudit.ps1 -Full
 By default, runs are written beneath:
 
 ```text
-%USERPROFILE%\Documents\PowerShellLearning\Logs
+%USERPROFILE%\Documents\EndpointAuditLogs
 ```
 
 Each run uses a unique directory similar to:
@@ -139,15 +139,14 @@ The source script does not contain credentials and does not transmit its results
 The repository can grow toward the following structure without moving everything immediately:
 
 ```text
-PowerShellLearning/
+PowerShell-Security-Toolkit/
 ├── README.md
-├── .gitignore
 ├── CHANGELOG.md                       # Future release history
 ├── LICENSE                            # Choose before wider public use
 ├── Scripts/
-│   ├── CurrentAudit.ps1               # Current 1.0.0 entry point
 │   ├── EndpointAudit/
-│   │   └── Invoke-EndpointAudit.ps1   # Future renamed entry point
+│   │   ├── README.md
+│   │   └── Invoke-EndpointAudit.ps1   # Current 1.0.1 entry point
 │   ├── Comparison/
 │   │   └── Compare-EndpointAudit.ps1
 │   ├── IdentityTriage/
@@ -157,8 +156,8 @@ PowerShellLearning/
 │   └── EndpointAudit/
 │       ├── EndpointAudit.psd1
 │       ├── EndpointAudit.psm1
-│       ├── Public/                     # Commands intended for users
-│       └── Private/                    # Internal helper functions
+│       ├── Public/
+│       └── Private/
 ├── Tests/
 │   ├── Unit/
 │   └── Integration/
@@ -167,9 +166,8 @@ PowerShellLearning/
 │   ├── Collectors.md
 │   ├── OutputSchema.md
 │   └── LearningNotes/
-├── Examples/
-│   └── RedactedOutput/
-└── Logs/                              # Generated locally; ignored by Git
+└── Examples/
+    └── RedactedOutput/
 ```
 
 The directories marked as future work should be created only when the project needs them. The existing single-script design remains appropriate while the fundamentals are being learned.
@@ -240,3 +238,5 @@ Version numbers are recorded in both the comment-based help and runtime metadata
 ## Current status
 
 Version `1.0.0` is the first complete learning milestone. Future work should begin from this known-good baseline and remain incremental so that each change can be understood and tested independently.
+
+Version `1.0.1` centralizes JSON export behavior and restores Windows PowerShell 5.1 parser compatibility without changing the collected data.

@@ -35,7 +35,7 @@
     Runs the audit with a custom output location and 48-hour lookback period.
 
 .NOTES
-    Script version: 1.0.0
+    Script version: 1.0.1
     Current collectors: operating system, local administrators, local users,
     interactive logon sessions, running processes, TCP and UDP network activity,
     recent System events, Windows services, scheduled tasks, startup commands,
@@ -80,6 +80,27 @@ function Write-AuditLog {
     $logLine = "$eventTimestamp [$runId] [$Level] $Message"
 
     Add-Content -LiteralPath $logPath -Value $logLine -Encoding utf8
+}
+
+function Export-AuditJson {
+    param (
+        [Parameter(Mandatory)]
+        [AllowNull()]
+        [object]$InputObject,
+
+        [Parameter(Mandatory)]
+        [string]$LiteralPath,
+
+        [ValidateRange(1, 100)]
+        [int]$Depth = 3
+    )
+
+    ConvertTo-Json `
+        -InputObject $InputObject `
+        -Depth $Depth |
+        Set-Content `
+            -LiteralPath $LiteralPath `
+            -Encoding utf8
 }
 
 function Get-AuditOperatingSystem {
@@ -245,24 +266,43 @@ function Get-AuditScheduledTasks {
     foreach ($task in $tasks) {
         $actions = @(
             foreach ($action in $task.Actions) {
-                $executeProperty = $action.PSObject.Properties['Execute']
-                $argumentsProperty = $action.PSObject.Properties['Arguments']
+                $executeProperty =
+                    $action.PSObject.Properties['Execute']
+
+                $argumentsProperty =
+                    $action.PSObject.Properties['Arguments']
+
                 $workingDirectoryProperty =
                     $action.PSObject.Properties['WorkingDirectory']
 
+                $execute = if ($null -ne $executeProperty) {
+                    $executeProperty.Value
+                }
+                else {
+                    $null
+                }
+
+                $actionArguments = if ($null -ne $argumentsProperty) {
+                    $argumentsProperty.Value
+                }
+                else {
+                    $null
+                }
+
+                $workingDirectory = if (
+                    $null -ne $workingDirectoryProperty
+                ) {
+                    $workingDirectoryProperty.Value
+                }
+                else {
+                    $null
+                }
+
                 [PSCustomObject]@{
-                    ActionType = $action.CimClass.CimClassName
-                    Execute = if ($null -ne $executeProperty) {
-                        $executeProperty.Value
-                    }
-                    Arguments = if ($null -ne $argumentsProperty) {
-                        $argumentsProperty.Value
-                    }
-                    WorkingDirectory = if (
-                        $null -ne $workingDirectoryProperty
-                    ) {
-                        $workingDirectoryProperty.Value
-                    }
+                    ActionType       = $action.CimClass.CimClassName
+                    Execute          = $execute
+                    Arguments        = $actionArguments
+                    WorkingDirectory = $workingDirectory
                 }
             }
         )
@@ -275,18 +315,28 @@ function Get-AuditScheduledTasks {
                 $randomDelayProperty =
                     $trigger.PSObject.Properties['RandomDelay']
 
+                $delay = if ($null -ne $delayProperty) {
+                    $delayProperty.Value
+                }
+                else {
+                    $null
+                }
+
+                $randomDelay = if ($null -ne $randomDelayProperty) {
+                    $randomDelayProperty.Value
+                }
+                else {
+                    $null
+                }
+
                 [PSCustomObject]@{
                     TriggerType       = $trigger.CimClass.CimClassName
                     Enabled           = $trigger.Enabled
                     StartBoundary     = $trigger.StartBoundary
                     EndBoundary       = $trigger.EndBoundary
                     ExecutionTimeLimit = $trigger.ExecutionTimeLimit
-                    Delay = if ($null -ne $delayProperty) {
-                        $delayProperty.Value
-                    }
-                    RandomDelay = if ($null -ne $randomDelayProperty) {
-                        $randomDelayProperty.Value
-                    }
+                    Delay             = $delay
+                    RandomDelay       = $randomDelay
                 }
             }
         )
@@ -501,7 +551,7 @@ $currentIdentity = [Security.Principal.WindowsIdentity]::GetCurrent()
 $executingUser = $currentIdentity.Name
 $timeZone = [TimeZoneInfo]::Local.Id
 $powerShellVersion = $PSVersionTable.PSVersion.ToString()
-$scriptVersion = '1.0.0'
+$scriptVersion = '1.0.1'
 
 # Determine whether this PowerShell process is running with administrator privileges.
 $currentPrincipal = [Security.Principal.WindowsPrincipal]::new(
@@ -567,9 +617,9 @@ $runContext = [PSCustomObject]@{
 $metadataPath = Join-Path -Path $runFolderPath -ChildPath 'Metadata.json'
 
 try {
-    $runContext |
-        ConvertTo-Json -Depth 3 |
-        Set-Content -LiteralPath $metadataPath -Encoding utf8
+    Export-AuditJson `
+        -InputObject $runContext `
+        -LiteralPath $metadataPath
 
     Write-Host "Metadata saved: $metadataPath"
     Write-AuditLog -Message "Metadata saved: $metadataPath"
@@ -594,9 +644,9 @@ $operatingSystemPath = Join-Path `
 try {
     $osInfo = Get-AuditOperatingSystem
 
-    $osInfo |
-        ConvertTo-Json -Depth 3 |
-        Set-Content -LiteralPath $operatingSystemPath -Encoding utf8
+    Export-AuditJson `
+        -InputObject $osInfo `
+        -LiteralPath $operatingSystemPath
 
     $osInfo | Format-List
 
@@ -620,12 +670,9 @@ $localAdministratorsPath = Join-Path `
 try {
     $localAdministrators = @(Get-AuditLocalAdministrators)
 
-    ConvertTo-Json `
+    Export-AuditJson `
         -InputObject $localAdministrators `
-        -Depth 3 |
-        Set-Content `
-            -LiteralPath $localAdministratorsPath `
-            -Encoding utf8
+        -LiteralPath $localAdministratorsPath
 
     $localAdministrators |
         Format-Table Name, ObjectClass, PrincipalSource, SID -AutoSize
@@ -654,12 +701,9 @@ $localUsersPath = Join-Path `
 try {
     $localUsers = @(Get-AuditLocalUsers)
 
-    ConvertTo-Json `
+    Export-AuditJson `
         -InputObject $localUsers `
-        -Depth 3 |
-        Set-Content `
-            -LiteralPath $localUsersPath `
-            -Encoding utf8
+        -LiteralPath $localUsersPath
 
     $localUsers |
         Format-Table Name, Enabled, PrincipalSource, LastLogon, SID -AutoSize
@@ -691,12 +735,9 @@ try {
             Sort-Object Name, ProcessId
     )
 
-    ConvertTo-Json `
+    Export-AuditJson `
         -InputObject $processInfo `
-        -Depth 3 |
-        Set-Content `
-            -LiteralPath $processesPath `
-            -Encoding utf8
+        -LiteralPath $processesPath
 
     $processInfo |
         Select-Object -First 15 |
@@ -735,12 +776,9 @@ try {
             Sort-Object State, LocalAddress, LocalPort
     )
 
-    ConvertTo-Json `
+    Export-AuditJson `
         -InputObject $tcpConnectionInfo `
-        -Depth 3 |
-        Set-Content `
-            -LiteralPath $tcpConnectionsPath `
-            -Encoding utf8
+        -LiteralPath $tcpConnectionsPath
 
     $tcpConnectionInfo |
         Group-Object State |
@@ -790,12 +828,9 @@ try {
             Sort-Object LocalPort, LocalAddress
     )
 
-    ConvertTo-Json `
+    Export-AuditJson `
         -InputObject $udpEndpointInfo `
-        -Depth 3 |
-        Set-Content `
-            -LiteralPath $udpEndpointsPath `
-            -Encoding utf8
+        -LiteralPath $udpEndpointsPath
 
     $udpEndpointInfo |
         Select-Object -First 30 |
@@ -842,12 +877,9 @@ try {
             -Encoding utf8
     }
     else {
-        ConvertTo-Json `
+        Export-AuditJson `
             -InputObject $systemEvents `
-            -Depth 3 |
-            Set-Content `
-                -LiteralPath $systemEventsPath `
-                -Encoding utf8
+            -LiteralPath $systemEventsPath
     }
 
     if ($systemEvents.Count -eq 0) {
@@ -895,12 +927,9 @@ try {
             Sort-Object Name
     )
 
-    ConvertTo-Json `
+    Export-AuditJson `
         -InputObject $serviceInfo `
-        -Depth 3 |
-        Set-Content `
-            -LiteralPath $servicesPath `
-            -Encoding utf8
+        -LiteralPath $servicesPath
 
     $serviceInfo |
         Group-Object State |
@@ -947,12 +976,10 @@ try {
             Sort-Object TaskPath, TaskName
     )
 
-    ConvertTo-Json `
+    Export-AuditJson `
         -InputObject $scheduledTaskInfo `
-        -Depth 6 |
-        Set-Content `
-            -LiteralPath $scheduledTasksPath `
-            -Encoding utf8
+        -LiteralPath $scheduledTasksPath `
+        -Depth 6
 
     $scheduledTaskInfo |
         Select-Object -First 20 `
@@ -997,12 +1024,9 @@ try {
             Sort-Object Name
     )
 
-    ConvertTo-Json `
+    Export-AuditJson `
         -InputObject $startupCommandInfo `
-        -Depth 3 |
-        Set-Content `
-            -LiteralPath $startupCommandsPath `
-            -Encoding utf8
+        -LiteralPath $startupCommandsPath
 
     $startupCommandInfo |
         Select-Object -First 20 `
@@ -1038,12 +1062,9 @@ try {
             Sort-Object StartTime -Descending
     )
 
-    ConvertTo-Json `
+    Export-AuditJson `
         -InputObject $interactiveSessionInfo `
-        -Depth 3 |
-        Set-Content `
-            -LiteralPath $interactiveSessionsPath `
-            -Encoding utf8
+        -LiteralPath $interactiveSessionsPath
 
     $interactiveSessionInfo |
         Format-Table `
@@ -1078,12 +1099,9 @@ $defenderStatusPath = Join-Path `
 try {
     $defenderStatusInfo = Get-AuditDefenderStatus
 
-    ConvertTo-Json `
+    Export-AuditJson `
         -InputObject $defenderStatusInfo `
-        -Depth 3 |
-        Set-Content `
-            -LiteralPath $defenderStatusPath `
-            -Encoding utf8
+        -LiteralPath $defenderStatusPath
 
     $defenderStatusInfo |
         Format-List `
@@ -1119,12 +1137,9 @@ try {
             Sort-Object DisplayName
     )
 
-    ConvertTo-Json `
+    Export-AuditJson `
         -InputObject $antivirusProductInfo `
-        -Depth 3 |
-        Set-Content `
-            -LiteralPath $antivirusProductsPath `
-            -Encoding utf8
+        -LiteralPath $antivirusProductsPath
 
     $antivirusProductInfo |
         Format-Table `
@@ -1160,12 +1175,9 @@ try {
             Sort-Object Name
     )
 
-    ConvertTo-Json `
+    Export-AuditJson `
         -InputObject $firewallProfileInfo `
-        -Depth 3 |
-        Set-Content `
-            -LiteralPath $firewallProfilesPath `
-            -Encoding utf8
+        -LiteralPath $firewallProfilesPath
 
     $firewallProfileInfo |
         Format-Table `
@@ -1202,12 +1214,9 @@ try {
             Sort-Object InterfaceIndex
     )
 
-    ConvertTo-Json `
+    Export-AuditJson `
         -InputObject $networkProfileInfo `
-        -Depth 3 |
-        Set-Content `
-            -LiteralPath $networkProfilesPath `
-            -Encoding utf8
+        -LiteralPath $networkProfilesPath
 
     $networkProfileInfo |
         Format-Table `
@@ -1245,12 +1254,9 @@ try {
             Sort-Object DisplayName
     )
 
-    ConvertTo-Json `
+    Export-AuditJson `
         -InputObject $firewallProductInfo `
-        -Depth 3 |
-        Set-Content `
-            -LiteralPath $firewallProductsPath `
-            -Encoding utf8
+        -LiteralPath $firewallProductsPath
 
     $firewallProductInfo |
         Format-Table `
@@ -1296,12 +1302,9 @@ else {
                 Sort-Object MountPoint
         )
 
-        ConvertTo-Json `
+        Export-AuditJson `
             -InputObject $bitLockerVolumeInfo `
-            -Depth 3 |
-            Set-Content `
-                -LiteralPath $bitLockerStatusPath `
-                -Encoding utf8
+            -LiteralPath $bitLockerStatusPath
 
         $bitLockerVolumeInfo |
             Format-Table `

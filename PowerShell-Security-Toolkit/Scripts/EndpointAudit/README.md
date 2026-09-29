@@ -2,7 +2,7 @@
 
 `Invoke-EndpointAudit.ps1` is a read-only PowerShell endpoint-triage script for collecting information from a Windows computer. It creates structured JSON files that can be reviewed during troubleshooting, security investigations, and incident-response learning.
 
-Current version: **1.0.0**
+Current version: **1.0.1**
 
 ## Collected Information
 
