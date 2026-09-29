@@ -4,6 +4,8 @@ This repository is a long-term PowerShell learning project centered on a Windows
 
 The current milestone is `Invoke-EndpointAudit.ps1` version **1.0.1**.
 
+See the [changelog](CHANGELOG.md) for release history and notable changes.
+
 ## Project goals
 
 - Learn PowerShell by building something practical.
