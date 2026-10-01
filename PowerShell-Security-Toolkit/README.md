@@ -100,6 +100,11 @@ Integration-test output is written to Pester's temporary `TestDrive` rather
 than the repository. Pester normally removes that temporary data after the test
 run finishes.
 
+GitHub Actions also runs the suite on a temporary GitHub-hosted Windows runner
+when a pull request targeting `main` is opened or updated, when relevant changes
+are pushed to `main`, or when the workflow is started manually. Audit output is
+not uploaded as a workflow artifact.
+
 ## Output
 
 By default, runs are written beneath:

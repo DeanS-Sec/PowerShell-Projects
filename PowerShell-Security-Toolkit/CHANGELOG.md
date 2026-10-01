@@ -16,6 +16,9 @@ and this project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
   and verifies its run directory, core files, JSON validity, metadata, activity
   log, and separation from the Git repository.
 - Added instructions for running the Endpoint Audit test suite.
+- Added a GitHub Actions workflow that runs the Endpoint Audit test suite on a
+  temporary Windows runner for pull requests and updates to `main`, with an
+  option to run it manually.
 
 ## [1.0.1] - 2026-09-29
 
