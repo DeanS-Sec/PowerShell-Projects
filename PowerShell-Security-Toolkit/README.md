@@ -79,6 +79,27 @@ View the script's comment-based help:
 Get-Help .\Invoke-EndpointAudit.ps1 -Full
 ```
 
+## Testing
+
+The Endpoint Audit test suite requires Pester 5.0 or later and a Windows host.
+From the repository root, run:
+
+```powershell
+Invoke-Pester `
+    -Path '.\PowerShell-Security-Toolkit\Tests\EndpointAudit' `
+    -Output Detailed
+```
+
+The syntax tests confirm that the audit script can be located and parsed by
+both PowerShell 7 and Windows PowerShell 5.1. The integration test performs a
+read-only audit with a one-hour event-log lookback, then verifies the run
+directory, core output files, JSON validity, metadata, activity log, and output
+isolation from the Git repository.
+
+Integration-test output is written to Pester's temporary `TestDrive` rather
+than the repository. Pester normally removes that temporary data after the test
+run finishes.
+
 ## Output
 
 By default, runs are written beneath:
