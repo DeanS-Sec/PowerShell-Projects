@@ -11,6 +11,11 @@ and this project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 ### Added
 
 - Added this changelog to record notable changes beginning with version 1.0.0.
+- Added Pester syntax tests for PowerShell 7 and Windows PowerShell 5.1.
+- Added a Pester integration test that runs Endpoint Audit in temporary storage
+  and verifies its run directory, core files, JSON validity, metadata, activity
+  log, and separation from the Git repository.
+- Added instructions for running the Endpoint Audit test suite.
 
 ## [1.0.1] - 2026-09-29
 
